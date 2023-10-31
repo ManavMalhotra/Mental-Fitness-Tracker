@@ -5,6 +5,8 @@ import pandas as pd
 import seaborn as sb
 import matplotlib.pyplot as plt
 import plotly.express as px
+from sklearn.preprocessing import LabelEncoder
+
 
 """# Preparing and Loading the data"""
 
@@ -25,39 +27,37 @@ data.isnull().sum()
 data.drop('Code', axis=1, inplace=True)
 data.head(10)
 
-data.size,data.shape
+# data.size,data.shape
 
-data.set_axis(["Country","Year","Schizophrenia","Bipolar-disorder","Eating-disorders","Anxiety-disorders","Drug-use disorders","Depressive-disorders","Alcohol-use disorders","Mental-Fitness"], axis ='columns', inplace=True)
-
+data = data.set_axis(["Country","Year","Schizophrenia","Bipolar-disorder","Eating-disorders","Anxiety-disorders","Drug-use disorders","Depressive-disorders","Alcohol-use disorders","Mental-Fitness"], axis ='columns')
 data.head(10)
 
-"""#Visualization"""
+# """#Visualization"""
 
-plt.figure(figsize=(12,6))
-sb.heatmap(data.corr(),annot=True,cmap='Reds')
-plt.plot()
+# plt.figure(figsize=(12,6))
+# sb.heatmap(data.corr(),annot=True,cmap='Reds')
+# plt.plot()
 
-sb.pairplot(data,corner=True)
-plt.show()
+# sb.pairplot(data,corner=True)
+# plt.show()
 
-mean = data["Mental-Fitness"].mean()
-mean
+# mean = data["Mental-Fitness"].mean()
+# mean
 
-Pie = px.pie(data, values="Mental-Fitness", names='Year')
-Pie.show()
+# Pie = px.pie(data, values="Mental-Fitness", names='Year')
+# Pie.show()
 
-fig = px.line(data, x='Year', y = 'Mental-Fitness', color = 'Country', markers=True ,color_discrete_sequence=['red','blue'], template='plotly_dark')
-fig.show()
+# fig = px.line(data, x='Year', y = 'Mental-Fitness', color = 'Country', markers=True ,color_discrete_sequence=['red','blue'], template='plotly_dark')
+# fig.show()
 
-data.info()
+# data.info()
 
-from sklearn.preprocessing import LabelEncoder
-lab = LabelEncoder()
-for i in data.columns:
-  if data[i].dtype == 'object':
-    data[i] = lab.fit_transform(data[i])
+# lab = LabelEncoder()
+# for i in data.columns:
+#   if data[i].dtype == 'object':
+#     data[i] = lab.fit_transform(data[i])
 
-data.shape
+# data.shape
 
 """#Split Data"""
 
@@ -71,7 +71,7 @@ print("xtrain =", xtrain.shape)
 print("xtest =", xtest.shape)
 print()
 print("ytrain =", ytrain.shape)
-print("ytrain =", ytest.shape)
+print("ytest =", ytest.shape)
 
 """#Model Training
 
@@ -80,7 +80,11 @@ print("ytrain =", ytest.shape)
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
+
 lr = LinearRegression()
+
+print(xtrain.shape)
+print(ytrain.shape)
 lr.fit(xtrain,ytrain)
 
 ytrain_pred = lr.predict(xtrain)
