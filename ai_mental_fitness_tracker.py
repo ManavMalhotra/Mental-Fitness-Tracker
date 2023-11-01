@@ -196,12 +196,11 @@ if st.button("Calculate"):
     st.write("Button was clicked!")
     Country = lab.fit_transform([Country])
     inputData = pd.DataFrame({'Country':Country,'Year':Year,'Schizophrenia':Schizophrenia,'Bipolar-disorder':Bipolar,'Eating disorders':Eating,'Anxiety-disorders':Anxiety,'Drug-use disorders':Drug_use,'Depressive-disorders':Depression,'Alcohol-use disorders':Alcohol},index=[0])
+    prediction = rf.predict(inputData.values)
+
+    # prediction= rf.predict([Country,Year,Schizophrenia,Bipolar,Eating,Anxiety,Drug_use,Depression,Alcohol])
+    st.write("Your Mental Fitness is {}%".format(prediction*10))
 
     # inputData = inputData.reshape(-1,)
 
 
-
-    prediction = rf.predict(inputData.values)
-
-    # prediction= rf.predict([Country,Year,Schizophrenia,Bipolar,Eating,Anxiety,Drug_use,Depression,Alcohol])
-    print("Your Mental Fitness is {}%".format(prediction*10))
