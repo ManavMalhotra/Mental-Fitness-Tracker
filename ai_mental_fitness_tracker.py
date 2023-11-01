@@ -10,8 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 
 """# Preparing and Loading the data"""
 
-df2 = pd.read_csv("C:\\Users\\manav\\Mental-Fitness-Tracker\\mental-and-substance-use-as-share-of-disease.csv")
-df1 = pd.read_csv("C:\\Users\\manav\\Mental-Fitness-Tracker\\prevalence-by-mental-and-substance-use-disorder.csv")
+df2 = pd.read_csv("mental-and-substance-use-as-share-of-disease.csv")
+df1 = pd.read_csv("prevalence-by-mental-and-substance-use-disorder.csv")
 
 df1.head()
 
