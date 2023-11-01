@@ -194,7 +194,7 @@ Alcohol= st.number_input("Alcohol Consuming rate per year in %: ",min_value=0.0,
 
 if st.button("Calculate"):
     st.write("Button was clicked!")
-    Country = lab.fit_transform(Country)
+    Country = lab.fit_transform([Country])
     inputData = pd.DataFrame({'Country':Country,'Year':Year,'Schizophrenia':Schizophrenia,'Bipolar-disorder':Bipolar,'Eating disorders':Eating,'Anxiety-disorders':Anxiety,'Drug-use disorders':Drug_use,'Depressive-disorders':Depression,'Alcohol-use disorders':Alcohol},index=[0])
 
     # inputData = inputData.reshape(-1,)
