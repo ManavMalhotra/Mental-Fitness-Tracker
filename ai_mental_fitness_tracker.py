@@ -171,28 +171,37 @@ print("R2 score is {}".format(r2))
 
 """#Result"""
 
-print("------  Welcome to Mental Fitness Tracker ------")
-print("------ Please Enter the Following Details ------ \n")
+# print("------  Welcome to Mental Fitness Tracker ------")
+# print("------ Please Enter the Following Details ------ \n")
 
 import streamlit as st
 
-Country= st.text_input(lab.fit_transform([input('Enter Your country Name: ')]))
-Year= st.text_input(int(input("Enter the Year:")))
-Schizophrenia = st.text_input((int(input("Schizophrenia rate in %: "))))
-Bipolar= st.text_input((int(input("Bipolar disorder rate in %: "))))
-Eating= st.text_input((int(input("Eating disorder rate in %: "))))
-Anxiety= st.text_input((int(input("Anxiety rate in %: "))))
-Drug_use= st.text_input((int(input("Drug Usage rate in per year %: "))))
-Depression= st.text_input((int(input("Depression rate in %: "))))
-Alcohol= st.text_input((int(input("Alcohol Consuming rate per year in %: "))))
+st.write("------  Welcome to Mental Fitness Tracker ------")
+st.write("------ Please Enter the Following Details ------ \n")
 
-inputData = pd.DataFrame({'Country':Country,'Year':Year,'Schizophrenia':Schizophrenia,'Bipolar-disorder':Bipolar,'Eating-disorders':Eating,'Anxiety-disorders':Anxiety,'Drug-use disorders':Drug_use,'Depressive-disorders':Depression,'Alcohol-use disorders':Alcohol},index=[0])
-
-# inputData = inputData.reshape(-1,)
-
+Country= st.text_input('Enter Your country Name: ')
+Year= st.number_input("Enter the Year:",min_value=0.0, format="%.2f")
+Schizophrenia = st.number_input("Schizophrenia rate in %: ", min_value=0.0,format="%.2f")
+Bipolar= st.number_input("Bipolar disorder rate in %: ", min_value=0.0,format="%.2f")
+Eating= st.number_input("Eating disorder rate in %: ",min_value=0.0, format="%.2f")
+Anxiety= st.number_input("Anxiety rate in %: ", min_value=0.0,format="%.2f")
+Drug_use= st.number_input("Drug Usage rate in per year %: ",min_value=0.0, format="%.2f")
+Depression= st.number_input("Depression rate in %: ", min_value=0.0,format="%.2f")
+Alcohol= st.number_input("Alcohol Consuming rate per year in %: ",min_value=0.0, format="%.2f")
 
 
-prediction = rf.predict(inputData.values)
 
-# prediction= rf.predict([Country,Year,Schizophrenia,Bipolar,Eating,Anxiety,Drug_use,Depression,Alcohol])
-print("Your Mental Fitness is {}%".format(prediction*10))
+
+if st.button("Calculate"):
+    st.write("Button was clicked!")
+    Country = lab.fit_transform(Country)
+    inputData = pd.DataFrame({'Country':Country,'Year':Year,'Schizophrenia':Schizophrenia,'Bipolar-disorder':Bipolar,'Eating disorders':Eating,'Anxiety-disorders':Anxiety,'Drug-use disorders':Drug_use,'Depressive-disorders':Depression,'Alcohol-use disorders':Alcohol},index=[0])
+
+    # inputData = inputData.reshape(-1,)
+
+
+
+    prediction = rf.predict(inputData.values)
+
+    # prediction= rf.predict([Country,Year,Schizophrenia,Bipolar,Eating,Anxiety,Drug_use,Depression,Alcohol])
+    print("Your Mental Fitness is {}%".format(prediction*10))
