@@ -10,8 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 
 """# Preparing and Loading the data"""
 
-df1 = pd.read_csv("./prevalence-by-mental-and-substance-use-disorder.csv")
-df2 = pd.read_csv("./mental-and-substance-use-as-share-of-disease.csv")
+df2 = pd.read_csv("C:\\Users\\manav\\projects\\Mental-Fitness-Tracker\\mental-and-substance-use-as-share-of-disease.csv")
+df1 = pd.read_csv("C:\\Users\\manav\\projects\\Mental-Fitness-Tracker\\prevalence-by-mental-and-substance-use-disorder.csv")
 
 df1.head()
 
@@ -51,11 +51,12 @@ data.head(10)
 # fig.show()
 
 # data.info()
+from sklearn.preprocessing import LabelEncoder
 
-# lab = LabelEncoder()
-# for i in data.columns:
-#   if data[i].dtype == 'object':
-#     data[i] = lab.fit_transform(data[i])
+lab = LabelEncoder()
+for i in data.columns:
+  if data[i].dtype == 'object':
+    data[i] = lab.fit_transform(data[i])
 
 # data.shape
 
@@ -80,11 +81,7 @@ print("ytest =", ytest.shape)
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-
 lr = LinearRegression()
-
-print(xtrain.shape)
-print(ytrain.shape)
 lr.fit(xtrain,ytrain)
 
 ytrain_pred = lr.predict(xtrain)
@@ -179,13 +176,21 @@ print("------ Please Enter the Following Details ------ \n")
 
 Country= lab.fit_transform([input('Enter Your country Name: ')])
 Year= int(input("Enter the Year:"))
-Schizophrenia = (float(input("Schizophrenia rate in %: ")))
-Bipolar= (float(input("Bipolar disorder rate in %: ")))
-Eating= (float(input("Eating disorder rate in %: ")))
-Anxiety= (float(input("Anxiety rate in %: ")))
-Drug_use= (float(input("Drug Usage rate in per year %: ")))
-Depression= (float(input("Depression rate in %: ")))
-Alcohol= (float(input("Alcohol Consuming rate per year in %: ")))
+Schizophrenia = (int(input("Schizophrenia rate in %: ")))
+Bipolar= (int(input("Bipolar disorder rate in %: ")))
+Eating= (int(input("Eating disorder rate in %: ")))
+Anxiety= (int(input("Anxiety rate in %: ")))
+Drug_use= (int(input("Drug Usage rate in per year %: ")))
+Depression= (int(input("Depression rate in %: ")))
+Alcohol= (int(input("Alcohol Consuming rate per year in %: ")))
 
-prediction= rf.predict([[Country,Year,Schizophrenia,Bipolar,Eating,Anxiety,Drug_use,Depression,Alcohol]])
+inputData = pd.DataFrame({'Country':Country,'Year':Year,'Schizophrenia':Schizophrenia,'Bipolar-disorder':Bipolar,'Eating-disorders':Eating,'Anxiety-disorders':Anxiety,'Drug-use disorders':Drug_use,'Depressive-disorders':Depression,'Alcohol-use disorders':Alcohol},index=[0])
+
+# inputData = inputData.reshape(-1,)
+
+
+
+prediction = rf.predict(inputData.values)
+
+# prediction= rf.predict([Country,Year,Schizophrenia,Bipolar,Eating,Anxiety,Drug_use,Depression,Alcohol])
 print("Your Mental Fitness is {}%".format(prediction*10))
