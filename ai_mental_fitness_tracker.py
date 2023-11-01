@@ -10,8 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 
 """# Preparing and Loading the data"""
 
-df2 = pd.read_csv("mental-and-substance-use-as-share-of-disease.csv")
-df1 = pd.read_csv("prevalence-by-mental-and-substance-use-disorder.csv")
+df2 = pd.read_csv("C:\\Users\\manav\\Mental-Fitness-Tracker\\mental-and-substance-use-as-share-of-disease.csv")
+df1 = pd.read_csv("C:\\Users\\manav\\Mental-Fitness-Tracker\\prevalence-by-mental-and-substance-use-disorder.csv")
 
 df1.head()
 
@@ -174,15 +174,17 @@ print("R2 score is {}".format(r2))
 print("------  Welcome to Mental Fitness Tracker ------")
 print("------ Please Enter the Following Details ------ \n")
 
-Country= lab.fit_transform([input('Enter Your country Name: ')])
-Year= int(input("Enter the Year:"))
-Schizophrenia = (int(input("Schizophrenia rate in %: ")))
-Bipolar= (int(input("Bipolar disorder rate in %: ")))
-Eating= (int(input("Eating disorder rate in %: ")))
-Anxiety= (int(input("Anxiety rate in %: ")))
-Drug_use= (int(input("Drug Usage rate in per year %: ")))
-Depression= (int(input("Depression rate in %: ")))
-Alcohol= (int(input("Alcohol Consuming rate per year in %: ")))
+import streamlit as st
+
+Country= st.text_input(lab.fit_transform([input('Enter Your country Name: ')]))
+Year= st.text_input(int(input("Enter the Year:")))
+Schizophrenia = st.text_input((int(input("Schizophrenia rate in %: "))))
+Bipolar= st.text_input((int(input("Bipolar disorder rate in %: "))))
+Eating= st.text_input((int(input("Eating disorder rate in %: "))))
+Anxiety= st.text_input((int(input("Anxiety rate in %: "))))
+Drug_use= st.text_input((int(input("Drug Usage rate in per year %: "))))
+Depression= st.text_input((int(input("Depression rate in %: "))))
+Alcohol= st.text_input((int(input("Alcohol Consuming rate per year in %: "))))
 
 inputData = pd.DataFrame({'Country':Country,'Year':Year,'Schizophrenia':Schizophrenia,'Bipolar-disorder':Bipolar,'Eating-disorders':Eating,'Anxiety-disorders':Anxiety,'Drug-use disorders':Drug_use,'Depressive-disorders':Depression,'Alcohol-use disorders':Alcohol},index=[0])
 
