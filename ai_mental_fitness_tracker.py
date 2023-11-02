@@ -36,8 +36,6 @@ for i in data.columns:
     data[i] = lab.fit_transform(data[i])
 
 
-"""#Split Data"""
-
 x = data.drop('Mental-Fitness',axis=1)
 y = data['Mental-Fitness']
 
