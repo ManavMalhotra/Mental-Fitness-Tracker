@@ -1,4 +1,4 @@
-# MindBalance - Wellbeing Check-in (Final Corrected Logic)
+# MindBal - Wellbeing Check-in (Final Corrected Logic)
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 import streamlit as st
@@ -88,8 +88,8 @@ def get_targeted_tips(vals):
 # -----------------------
 # Streamlit Interface
 # -----------------------
-st.set_page_config(page_title="MindBalance", page_icon="🧠", layout="centered")
-st.title("🧠 MindBalance - Your Wellbeing Check-in")
+st.set_page_config(page_title="MindBal", page_icon="🧠", layout="centered")
+st.title("🧠 MindBal: Wellbeing Assessment System")
 st.write("Take a short reflection to understand your mental wellbeing better. This is not a diagnosis - just gentle guidance. Be honest, this is only for you.")
 
 with st.form("checkin_form"):
@@ -168,4 +168,4 @@ if submitted:
     else:
         st.write("> These are reflective suggestions, not medical advice. If you feel ongoing struggles, professional support is always valuable.")
 
-    st.caption("💡 MindBalance is a reflection tool, not a medical diagnosis.")
+    st.caption("💡 MindBal is a reflection tool, not a medical diagnosis.")
