@@ -17,8 +17,8 @@ warnings.filterwarnings("ignore")
 @st.cache_resource
 def load_and_train():
     try:
-        df1 = pd.read_csv("prevalence-by-mental-and-substance-use-disorder.csv")
-        df2 = pd.read_csv("mental-and-substance-use-as-share-of-disease.csv")
+        df1 = pd.read_csv("./dataset/prevalence-by-mental-and-substance-use-disorder.csv")
+        df2 = pd.read_csv("./dataset/mental-and-substance-use-as-share-of-disease.csv")
     except FileNotFoundError:
         return None, None, None, "CSV files not found"
     
