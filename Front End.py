@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[26]:
-
-
 import joblib
 import streamlit as st
 
@@ -31,10 +25,3 @@ if user_input:
 
     prediction = svc_model.predict(res)
     st.write("Sentiment of Text is :", prediction)
-
-
-# In[ ]:
-
-
-
-

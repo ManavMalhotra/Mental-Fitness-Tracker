@@ -1,4 +1,3 @@
-# MindBal - Wellbeing Check-in (Final Corrected Logic)
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 import streamlit as st
@@ -7,8 +6,6 @@ import numpy as np
 import time
 import warnings
 warnings.filterwarnings("ignore")
-
-# (Data loading and model training code remains for context, but is NOT used for final score)
 
 # -----------------------
 # Data load & preparation
@@ -33,9 +30,7 @@ data = data.set_axis([
     "Depressive-disorders", "Alcohol-use disorders", "Mental-Fitness"
 ], axis='columns')
 
-# -----------------------
 # Helper Functions
-# -----------------------
 OPTIONS = ["No", "Not Really", "Don't Know", "Sure", "Yes"]
 
 
